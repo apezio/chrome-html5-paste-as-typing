@@ -1,0 +1,21 @@
+{
+  "name": "chrome html5 Paste as Typing",
+  "description": "Types clipboard contents into the active page (canvas-friendly, no key-repeat).",
+  "version": "1.4.0",
+  "manifest_version": 3,
+  "permissions": ["scripting", "activeTab", "clipboardRead", "storage", "contextMenus", "debugger"],
+  "host_permissions": ["<all_urls>"],
+  "action": { "default_title": "Paste as Typing" },
+  "background": { "service_worker": "background.js" },
+  "commands": {
+    "paste_as_typing": {
+      "suggested_key": { "default": "Alt+Shift+V" },
+      "description": "Paste clipboard as simulated typing"
+    },
+    "paste_as_typing_stop": {
+      "suggested_key": { "default": "Alt+Shift+Period" },
+      "description": "Stop typing"
+    }
+  },
+  "options_page": "options.html"
+}
