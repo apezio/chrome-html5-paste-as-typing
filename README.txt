@@ -6,7 +6,7 @@ Install instructions:
 2) Open Chrome://extensions
 3) Toggle/Enable "Developer Mode" in upper right
 4) Click "Load Unpacked" and select the Unzipped folder 'chrome-paste-as-keystrokes-main'.
-5) Pin the extension Icon for this extenion. (click Extensions icon in the browser window, and Pin this extension)
+5) Pin the extension Icon for this extenion (click Extensions icon in the browser window, and then toggle the 'Pin' icon).
 
 Clicking the extension icon will simulate keystrokes of the contents of the clipboard.  
 
