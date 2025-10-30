@@ -1,4 +1,4 @@
-// Paste as Typing – background.js (v1.5, canvas-safe with full US symbol map)
+// Paste as Keystrokes – background.js (v1.5, canvas-safe with full US symbol map)
 
 // ---- setup
 chrome.runtime.onInstalled.addListener(() => {
