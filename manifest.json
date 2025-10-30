@@ -1,5 +1,5 @@
 {
-  "name": "chrome html5 Paste as Typing",
+  "name": "Chrome Paste As Keystrokes",
   "description": "Types clipboard contents into the active page (canvas-friendly, no key-repeat).",
   "version": "1.4.0",
   "manifest_version": 3,
