@@ -105,16 +105,6 @@ async function typeViaCDP(tabId, text, cps, enterAsReturn) {
     await attach();
     await send("Page.bringToFront");
 
-    // click multiple points to ensure focus
-    const { contentSize, visualViewport } = await getMetrics();
-    const v = visualViewport || { pageX:0,pageY:0,clientWidth:contentSize?.width||1200,clientHeight:contentSize?.height||800 };
-    const pts=[
-      [v.pageX+v.clientWidth/2,v.pageY+v.clientHeight/2],
-      [v.pageX+v.clientWidth/2,v.pageY+v.clientHeight*0.3],
-      [v.pageX+v.clientWidth/2,v.pageY+v.clientHeight*0.7]
-    ];
-    for (const [x,y] of pts) await mouseClick(Math.floor(x),Math.floor(y));
-
     await releaseAllModifiers();
 
     for (const raw of String(text)) {
@@ -161,12 +151,6 @@ async function typeViaCDP(tabId, text, cps, enterAsReturn) {
   function attach(){return new Promise((res,rej)=>chrome.debugger.attach(target,"1.3",()=>chrome.runtime.lastError?rej(chrome.runtime.lastError):res()));}
   function detach(){return new Promise((res)=>chrome.debugger.detach(target,()=>res()));}
   function send(m,p={}){return new Promise((res,rej)=>chrome.debugger.sendCommand(target,m,p,(r)=>chrome.runtime.lastError?rej(chrome.runtime.lastError):res(r)));}
-  async function getMetrics(){try{return await send("Page.getLayoutMetrics");}catch{return{};}}
-  async function mouseClick(x,y){
-    await send("Input.dispatchMouseEvent",{type:"mouseMoved",x,y});
-    await send("Input.dispatchMouseEvent",{type:"mousePressed",x,y,button:"left",clickCount:1});
-    await send("Input.dispatchMouseEvent",{type:"mouseReleased",x,y,button:"left",clickCount:1});
-  }
   async function keyTapKD(key,code,vk,text,mods){
     await send("Input.dispatchKeyEvent",{type:"keyDown",key,code,windowsVirtualKeyCode:vk,nativeVirtualKeyCode:vk,text,unmodifiedText:text,modifiers:mods});
     await send("Input.dispatchKeyEvent",{type:"keyUp",key,code,windowsVirtualKeyCode:vk,nativeVirtualKeyCode:vk,modifiers:mods});
