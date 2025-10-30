@@ -122,8 +122,12 @@ async function typeViaCDP(tabId, text, cps, enterAsReturn) {
       const ch = raw === "\r" ? "" : raw;
       if (!ch) continue;
 
-      if (ch === "\n" && enterAsReturn) {
-        await keyTapKD("Enter","Enter",13,"",0);
+      if (ch === "\n") {
+        if (enterAsReturn) {
+          await keyTapKD("Enter","Enter",13,"",0);
+        } else {
+          await keyTapKD("Enter","Enter",13,"\n",0);
+        }
       } else if (ch === "\t") {
         await keyTapKD("Tab","Tab",9,"",0);
       } else {
