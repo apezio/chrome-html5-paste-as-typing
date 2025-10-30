@@ -1,4 +1,4 @@
-Useful for pasting text into Supermicro iKVM HTML Console windows.
+Useful for pasting text into Supermicro iKVM HTML Console windows (and probably lots of other things).
 
 Install instructions:
 
